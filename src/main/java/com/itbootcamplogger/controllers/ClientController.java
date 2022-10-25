@@ -2,13 +2,14 @@ package com.itbootcamplogger.controllers;
 
 
 import com.itbootcamplogger.controllers.model.CreateClientRequest;
+import com.itbootcamplogger.controllers.model.CreateLoginRequest;
+import com.itbootcamplogger.model.Client;
 import com.itbootcamplogger.servivces.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.validation.Valid;
 
 @RestController
@@ -19,5 +20,9 @@ public class ClientController {
     @PostMapping("api/clients/register")
     public ResponseEntity<String> create(@Valid @RequestBody CreateClientRequest request) {
         return clientService.createClient(request);
+    }
+    @PostMapping("api/clients/login")
+    public ResponseEntity<Client> login(@RequestBody CreateLoginRequest request){
+        return clientService.logInClient(request);
     }
 }

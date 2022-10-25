@@ -9,6 +9,10 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
     boolean existsByUsernameEquals(String username);
     boolean existsByEmailEquals(String email);
+    Client findByEmail(String email);
+
+
+
 
 
 
