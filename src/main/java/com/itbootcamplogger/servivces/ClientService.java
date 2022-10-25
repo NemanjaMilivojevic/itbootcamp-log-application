@@ -17,7 +17,7 @@ public class ClientService {
 
     public ResponseEntity<String> createClient(CreateClientRequest client) {
         final var model = mapper.toClientModel(client);
-        if (isUsernameExists(client.getUsername()) != 0 || isEmailExists(client.getEmail()) != 0) {
+        if (repository.existsByUsernameEquals(client.getUsername()) || repository.existsByEmailEquals(client.getEmail())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Username or email already exists");
         } else if (!client.isPasswordValid(client.getPassword())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password input incorrect");
@@ -26,13 +26,6 @@ public class ClientService {
             return ResponseEntity.status(HttpStatus.CREATED).body("Client successfully created");
         }
 
-    }
-
-    public int isUsernameExists(String username){
-       return repository.findByUsername(username);
-    }
-    public int isEmailExists(String email){
-        return repository.findByEmail(email);
     }
 
 }
