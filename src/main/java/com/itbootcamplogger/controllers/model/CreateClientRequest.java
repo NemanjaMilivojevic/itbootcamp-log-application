@@ -17,7 +17,7 @@ public class CreateClientRequest {
     @Email(message = "Email should be valid")
     private String email;
 
-    public boolean isValidPassword(String password)
+    public boolean isPasswordValid(String password)
     {
         String regex = "^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"

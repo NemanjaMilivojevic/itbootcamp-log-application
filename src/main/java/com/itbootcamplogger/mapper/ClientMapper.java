@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ClientMapper {
-    public Client toModel(CreateClientRequest client) {
+    public Client toClientModel(CreateClientRequest client) {
         return new Client(client.getUsername(), client.getPassword(), client.getEmail());
     }
 
