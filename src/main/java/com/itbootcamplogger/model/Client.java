@@ -1,7 +1,6 @@
 package com.itbootcamplogger.model;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +16,8 @@ public class Client {
     private String username;
     private String password;
     private String email;
+
+    private int roleId;
 
     public Client(String username, String password, String email) {
 
